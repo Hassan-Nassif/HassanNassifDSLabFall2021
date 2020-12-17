@@ -10,7 +10,7 @@ package Assignment4;
  *
  * @author Hassan Nassif
  */
-public interface ListInterface {
+public interface List {
     //return size of list
     int size();
     

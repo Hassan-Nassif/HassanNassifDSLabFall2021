@@ -9,10 +9,59 @@ package Assignment4;
  *
  * @author Hassan Nassif
  */
-public class LinkedList implements ListInterface {
-
+public class LinkedList implements List {
       Node head;
       Node next;
+private class Node {
+
+        Object value;
+        Node next;
+
+        public Node(Object value) {
+            this.value = value;
+            
+        }
+
+        public Node() {
+        }
+        
+
+        public Node getNext() {
+            return next;
+        }
+        
+
+        public void setNext(Node next) {
+            this.next = next;
+        }
+
+        public Object getValue() {
+            return value;
+        }
+
+        public void setValue(Object value) {
+            this.value = value;
+        }
+        
+        
+    }
+
+   
+
+    @Override
+    public void add(Object newElement) {
+        if (head == null) {
+            head = new Node(newElement);
+        } else {
+            // go to the tail of the list, and create a new node with the newElment
+            Node currentNode = head;
+            while (currentNode.next != null) {
+                currentNode = currentNode.next;
+            }
+            currentNode.next = new Node(newElement);
+        }
+    }
+
 
     public LinkedList() {
         this.head = null;
@@ -58,17 +107,7 @@ public class LinkedList implements ListInterface {
     }
 
     
-    public void add(Object newElement) {
-        if (head == null) { //or if(isEmpty())
-            head = new Node(newElement);
-        } else {
-            Node currentNode = head;
-            while (currentNode.getNext() != null) {
-                currentNode = currentNode.getNext();
-            }
-            currentNode.setNext(new Node(newElement));
-        }
-    }
+    
 
     public Node getHeadNode() {
         if (isEmpty()) {
